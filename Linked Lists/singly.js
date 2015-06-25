@@ -55,12 +55,19 @@ var LinkedList = (function(){
 
   LinkedList.prototype.remove = function(data){
     var previousNode = this.findPrevious(data);
-
+    if(previousNode != null){
+      previousNode.setNext(previousNode.getNext().getNext());
+    }
   };
 
   LinkedList.prototype.findPrevious = function(data){
-
-  }
+    var currentNode = this._head;
+    while(currentNode.getNext() != null && 
+          currentNode.getNext().getData() != data){
+      currentNode = currentNode.getNext();
+    }
+    return currentNode;
+  };
 
   return LinkedList;
 })();
