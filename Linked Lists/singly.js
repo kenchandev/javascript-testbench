@@ -13,6 +13,7 @@ var Node = (function(){
   };
 
   Node.prototype.getNext = function(){
+    console.log(_next);
     return _next;
   };
 
@@ -31,22 +32,28 @@ var LinkedList = (function(){
   };
 
   LinkedList.prototype.find = function(data){
+    console.log(_head.getData());
     var currentNode = _head;
-    while(currentNode.getData != data){
+    console.log(_head.getData());
+    console.log(currentNode.getData());
+    while(currentNode.getData() != data){
       currentNode = currentNode.getNext();
     }
     return currentNode;
   };
 
   LinkedList.prototype.insert = function(newData, precedingData){
+    console.log(_head.getData());
     var newNode = new Node(newData);
+    console.log(_head.getData());
     var precedingNode = this.find(precedingData);
+    console.log(precedingNode);
     newNode.setNext(precedingNode.getNext());
     precedingNode.setNext(newNode);
   };
 
   LinkedList.prototype.display = function(){
-    var currentNode = this._head;
+    var currentNode = _head;
     while(currentNode.getNext() != null){
       console.log(currentNode.getNext().getData());
       currentNode = currentNode.getNext();
@@ -61,7 +68,7 @@ var LinkedList = (function(){
   };
 
   LinkedList.prototype.findPrevious = function(data){
-    var currentNode = this._head;
+    var currentNode = _head;
     while(currentNode.getNext() != null && 
           currentNode.getNext().getData() != data){
       currentNode = currentNode.getNext();
