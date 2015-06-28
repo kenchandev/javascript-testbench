@@ -6,3 +6,9 @@ Various assortment of JavaScript data structures and algorithms...
 - Sets
 - Stack
 
+Upcoming...
+
+- Binary Search Trees
+- Graphs
+
+...
