@@ -2,5 +2,19 @@
 //  - A key is a unique identifier mapped to a particular element.
 
 function Dictionary(){
-  var items = {};
+  this._items = {};
+}
+
+Dictionary.prototype = {
+  constructor: Dictionary,
+  set: function(key, value){
+    _items[key] = value;
+  }
+  remove: function(key){
+    if(_items.has(key)){
+      delete items[key];
+      return true;
+    }
+    return false;
+  }
 }
