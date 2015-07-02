@@ -33,7 +33,7 @@ EmailFormView.prototype = {
 
     this._form.addEventListener('submit', function(event){
       event.preventDefault();
-      observer.publish('view.email-view.add', that.input.value);
+      observer.publish('view.email-view.add', that._input.value);
     }, false);
 
     observer.subscribe("model.email-address.added", function() {
@@ -73,7 +73,7 @@ EmailListView.prototype = {
       this._list.appendChild(this.createListItem(email));
     }
     // Append the list to the end of the current HTML page
-    document.body.appendChild(this.list);
+    document.body.appendChild(this._list);
     // Connect this View up to the system-wide events
     this.bindEvents();
   },
@@ -127,7 +127,7 @@ EmailListView.prototype = {
     this._list.insertBefore(this.createListItem(email), this._list.firstChild);
   },
   removeEmail: function(email) {
-    var listItems = this.list.getElementsByTagName("li"),
+    var listItems = this._list.getElementsByTagName("li"),
     index = 0,
     length = listItems.length;
     // Loop through all the list items, locating the one representing the provided email
@@ -146,7 +146,7 @@ EmailListView.prototype = {
 // calls the render() methods of its child Views in turn, passing along any Model data
 // provided upon instantiation
 function EmailView(views) {
-  this.views = views || [];
+  this._views = views || [];
 }
 
 EmailView.prototype = {
@@ -154,11 +154,11 @@ EmailView.prototype = {
   // executes the render() method of each of its child Views
   render: function(modelData) {
     var index = 0,
-    length = this.views.length;
+    length = this._views.length;
     // Loop through the child views, executing their render() methods, passing along any
     // Model data provided upon instantiation
     for (; index < length; index++) {
-      this.views[index].render(modelData);
+      this._views[index].render(modelData);
     }
   }
 };
