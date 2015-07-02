@@ -1,10 +1,12 @@
 // Create an instance of our email Model "class", populating it with a few email addresses to
 // get started with
 var emailModel = new EmailModel([
-"denodell@me.com",
-"denodell@gmail.com",
-"den.odell@akqa.com"
+  "foo@gmail.com",
+  "bar@gmail.com",
+  "baz@gmail.com",
+  "qux@gmail.com"
 ]),
+
 // Create instances of our form View and list View "classes"
 emailFormView = new EmailFormView(),
 emailListView = new EmailListView(),
