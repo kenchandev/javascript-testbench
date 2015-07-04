@@ -10,5 +10,6 @@ Upcoming...
 
 - Binary Search Trees
 - Graphs
+- Visualization for each data structure.
 
 ...
