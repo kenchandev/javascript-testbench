@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>First Example</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 target"></div>
+    </div>
+  </div>
+
+  <script type="text/jsx">
+    //  Define a class to blueprint the component.
+    //  Accepts a configuration object that must have render() function.
+    var Badge = React.createClass({
+      render: function(){
+        return <button className="btn btn-primary" type="button">
+          {this.props.title} <span className="badge">{this.props.number}</span>
+        </button>
+      }
+    });
+
+    var Thumbnail = React.createClass({
+      render: function(){
+        return <div className="thumbnail">
+          <img src={this.props.imageURL} alt="..."/>
+          <div className="caption">
+            <h3>{this.props.header}</h3>
+            <p>{this.props.description}</p>
+            <p>
+              <Badge title={this.props.title} number={this.props.number}/>
+            </p>
+          </div>
+        </div>
+      }
+    });
+
+    var ThumbnailList = React.createClass({
+      render: function(){
+        var list = this.props.thumbnailData.map(function(thumbnailProps){
+          //  Pass in all properties to Thumbnail component.
+          return <Thumbnail {...thumbnailProps}/>
+        });
+
+        return <div>
+          {list}
+        </div>
+      }
+    });
+
+    var options = {
+      thumbnailData: [{
+        title: 'See Tutorial',
+        number: 32,
+        imageURL: 'http://formatjs.io/img/react.svg',
+        header: 'React.js Tutorial',
+        description: 'React is a fantastic new library for making fast, dynamic pages.'
+      },{
+        title: 'See Tutorial',
+        number: 25,
+        imageURL: 'https://avatars0.githubusercontent.com/u/6200624?v=3&s=400',
+        header: 'Gulp.js Tutorial',
+        description: 'Gulp speeds up development workflow.'
+      }]
+    };
+
+    //  React, create instance and render this class.
+    //  Second parameter is this.props values...
+    var element = React.createElement(ThumbnailList, options);
+    //  React, after rendering this class, place it in body tag.
+    React.render(element, document.querySelector('.container'));
+  </script>
+</body>
+</html>

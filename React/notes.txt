@@ -1,0 +1,125 @@
+http://github.com/stephengrider/reactcasts
+
+git clone https://github.com/StephenGrider/ReactCasts.git
+cd ReactCasts
+git checkout (SHA)
+
+Companion Tools
+---------------
+JSX - JavaScript Extension (allows HTML to be written in JavaScript, syntatic sugar)
+    - Needs to be compiled to JavaScript for browser to interpret
+
+<script type="text/jsx">
+  //  Define a class to blueprint the component.
+  //  Accepts a configuration object that must have render() function.
+  var HelloWorld = React.createClass({
+    render: function(){
+      return <div>
+        Hello World!
+      </div>;
+    }
+  });
+  //  React, create instance and render this class.
+  var element = React.createElement(HelloWorld);
+  //  React, after rendering this class, place it in body tag.
+  React.render(element, document.body);
+</script>
+
+Cannot use class attribute within literal HTML. Must use className keyword.
+
+component - smallest possible representation of a group of DOM elements along with its corresponding actions and states.
+
+Replace JSX template with curly braces with dynamic content.
+
+this.props - an object every instance of the object shares.
+
+<script type="text/jsx">
+  //  Define a class to blueprint the component.
+  //  Accepts a configuration object that must have render() function.
+  var Badge = React.createClass({
+    render: function(){
+      return <button className="btn btn-primary" type="button">
+        {this.props.title} <span className="badge">{this.props.number}</span>
+      </button>
+    }
+  });
+
+  var options = {
+    title: 'Inbox',
+    number: 32
+  };
+
+  //  React, create instance and render this class.
+  //  Second parameter is this.props values...
+  var element = React.createElement(Badge, options);
+  //  React, after rendering this class, place it in body tag.
+  React.render(element, document.body);
+</script>
+
+nesting - Placing one component inside another (parent/child)
+          Properties trickle down to children.
+
+composition - placing one component inside of another component.
+
+reconciliation - appears to rerender the whole app on every update, but utilizes a virtual DOM to perform the rerender and compares the current DOM with this DOM. Reconciles trees level by level and only the differences (minimal number of modifications) found are rendered.
+
+Tooling
+-------
+
+  - Must determine how each module file utilizes JSX.
+    Including individual JS files may be messy...
+
+    * Include one single file. 
+      1.  Break each class into its own JSX file.
+      2.  Compile each JSX file into JavaScript.
+      3.  Combine all files into a single file.
+      4.  Include in a single script tag.
+
+  Gulp.js - automate build process.
+    gulp-react: compile JSX into JS
+    gulp-concat: join converted files into single file
+
+package.json: tells Node.js that packages exist within this directory.
+
+gulpfile.js: provide instructions for gulp.js
+
+$ npm install -g gulp-cli
+$ gulp -v
+
+gulp acts as a skeleton for the build process.
+
+Must concatenate all files in the correct order via browserify.js.
+(by default, concatenation is based on alphabetical name of files)  
+
+browserify.js - go into the project and find a module named '____' inside require() function. The variable references what it's set to. Set up require() functions correctly to combine modules in the correct order. Specify dependencies between files.
+
+$ npm install --save browserify reactify vinyl-source-stream watchify gulp-util
+
+  //  Load every file (**) within the 'src' folder.
+  return gulp.src('src/**')
+             .pipe(react())       //  Turn files from JSX to JS
+             .pipe(concat('app.js'))  //  Join all files into app.js
+             .pipe(gulp.dest('./')); //  Save new file into current working directory
+
+browserify - module.exports function...
+var Adder = require('./adder'); //  Must provide a path...
+var Gulp = require('gulp'); //  npm module, npm-type syntax
+
+State and Events
+----------------
+
+state - a property on every React component that is used to record interactions with the user (i.e.: use state to remember if the dropdown is revealed or not, if a button has been clicked or not, etc.) - useful for rerendering at any time
+
+If a user is using an application, and the dropdown is currently open, if they check a checkbox on the right-hand side, this causes everything on the webpage to be re-rendered. If we don't record the state of the dropdown, the re-render will cause the dropdown to be suddenly closed
+
+this.state
+
+onClick, onChange, onKeyPress function
+
+** We cannot put event handlers inside of React components (must pass as a property)
+
+** Design Advice: Abstracting to another component highly depends on the number of customizable properties passed.
+
+initialize the state of the component the first time it's created/rendered using the getInitialState() method. Return an object that's stored in this.state.
+
+Use this.setState({}) to change the state. Never directly manipulate the state object. Otherwise, the change will not persist throughout the component.

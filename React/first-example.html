@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>First Example</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+</head>
+<body>
+  <script type="text/jsx">
+    //  Define a class to blueprint the component.
+    //  Accepts a configuration object that must have render() function.
+    var HelloWorld = React.createClass({
+      render: function(){
+        return <div>
+          Hello World!
+        </div>;
+      }
+    });
+    //  React, create instance and render this class.
+    var element = React.createElement(HelloWorld);
+    //  React, after rendering this class, place it in body tag.
+    React.render(element, document.body);
+  </script>
+</body>
+</html>

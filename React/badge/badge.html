@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>First Example</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+</head>
+<body>
+  <script type="text/jsx">
+    //  Define a class to blueprint the component.
+    //  Accepts a configuration object that must have render() function.
+    var Badge = React.createClass({
+      render: function(){
+        return <button className="btn btn-primary" type="button">
+          {this.props.title} <span className="badge">{this.props.number}</span>
+        </button>
+      }
+    });
+
+    var options = {
+      title: 'Inbox',
+      number: 32
+    };
+
+    //  React, create instance and render this class.
+    //  Second parameter is this.props values...
+    var element = React.createElement(Badge, options);
+    //  React, after rendering this class, place it in body tag.
+    React.render(element, document.body);
+  </script>
+</body>
+</html>
