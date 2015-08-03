@@ -1,0 +1,40 @@
+passport-local: local logins and signups
+--------------
+passport-facebook: facebook login and registration
+-----------------
+passport-twitter: twitter login and registration
+----------------
+passport-google-oauth: google+ login and registration
+---------------------
+
+1. Require login for certain routes/sections for application
+2. Create password hash for local accounts via bcrypt-nodejs
+                                               -------------
+3. Display error messages via connect-flash
+                              -------------
+4. Link all social networks under one user account
+5. Allow a user to unlink a specific social media account
+
+mongoose: MongoDB object modeling tool designed to work in an asynchronous environment.
+--------
+morgan: HTTP request logger middleware for Node.js.
+------
+body-parser: Node.js body parsing middleware.
+-----------
+cookie-parser: Parse 'Cookie' header and populate req.cookues with an object keyed by the cookie names. (Built-in support for signed cookies)
+-------------
+method-override: Enables use of HTTP verbs such as PUT or DELETE in places where the client doesn't support it
+---------------
+express-session: Simple session middleware for Express.js
+---------------
+connect-flash: Enables passing of session flash-data messages.
+-------------
+
+* Sessions are server-side files that contain user information, while cookies are client-side files that contain user information. Sessions have a unique identifier that maps them to specific users. This identifier can be passed in the URL or saved into a session cookie. Deleting the cookies effectively erase their matching sessions as the unique session identifier contained in the cookies are removed.
+
+Configure a strategy (authentication mechanisms unique to an authentication's requirements) for local, Facebook, Twitter and Google.
+
+Additionally, create serialization and deserialization functions to store users in session.
+
+Serialization: process of translating data structures or object state into a format that can be stored.
+Deserialization: extract a data structure from a series of bytes.
