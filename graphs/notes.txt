@@ -1,0 +1,62 @@
+Graph - abstract model for a network-based structure
+      - constructed from a set of nodes (vertices) connected by edges
+
+Example applications of graphs:
+  - roads
+  - flights
+  - communications
+
+G = (V, E)
+
+  V: A set of vertices
+  E: A set of edges connecting the vertices in V
+
+Connected vertices: adjacent vertices
+                    --------
+
+Degree: number of adjacent vertices associated with a vertex.
+------
+
+Path: sequence of consecutive, adjacent vertices.
+----
+Simple Path: path without repeated vertices.
+
+A graph is acyclic if it does not have cycles.
+           -------
+
+Directed Graphs: edges have direction
+---------------
+
+A graph is strongly connected if there is a path in both directions between every pair of vertices. There is a route between every two vertices.
+Strongly connected components: every vertex within the sub-graph is reachable from every other vertex.
+-----------------------------
+
+Weight refers to a numeric values assigned to each edge/route within a graph, generally associated with cost.
+------
+
+Finding shortest path.
+
+Complete graphs are undirected graphs where there is an edge between every pair of nodes.
+---------------
+
+Represent graphs via adjacency matrices or adjacency lists.
+  - Adjacency Matrices:
+      represent connectivity between two vertices via a two-dimensional array
+      ex: graph[i][j] === 1
+
+  Not strongly connected graphs are sparse with numerous zero entries. Very space inefficient.
+
+  Advantages: O(1) check if there is a
+              O(1) operation to add/remove connectivity
+  Disadvantages: Not scalable. If additional nodes are added, then the entire 2-D matrix representation will have to be reconstructed. To find a vertex's adjacent nodes, must iterate through all the possible adjacent nodes and check for connectivity.
+
+  - Adjacency List:
+      dynamic data structure that consists of a list of adjacent vertices for every vertex of the graph
+      (for sparse graphs, more space efficient; for listing all adjacent vertices, more time efficient since no need to iterate through all nodes; for checking existence of connection between two vertices, less time efficient)
+
+  - Incidence Matrix
+      2-d matrix with one side representative of the individual vertices and the other side representative of possible connections/edges between two nodes.
+
+      Ex: A and A-C (1 if incident upon the specified edge, 0 otherwise)
+
+      Better for cases with more edges than vertices. 

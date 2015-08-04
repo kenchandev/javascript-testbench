@@ -1,0 +1,16 @@
+{
+  "name": "arrays",
+  "version": "1.0.0",
+  "description": "demonstrating the capabilities of arrays",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "arrays",
+    "data",
+    "structures",
+    "elements"
+  ],
+  "author": "Ken Chan <thiskenchan@gmail.com> (http://kenchan.me)",
+  "license": "MIT"
+}

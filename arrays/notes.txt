@@ -1,0 +1,3 @@
+Array - simplest memory data structure
+      - stores a sequence of values of the various data types
+        (in other languages, only a single data type)
