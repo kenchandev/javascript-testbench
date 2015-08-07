@@ -34,5 +34,9 @@ Directives: Markers on DOM element (such as attributes, element name, etc.)
 
 Bootstrapping: AngularJS's initialization process.
         Done in Two Ways
-            - Automatic Initialization
-            - Manual Initialization
+            - Automatic Initialization (encounters ngApp directive)
+            - Manual Initialization (perform an operation before compilation of page by AngularJS)
+
+{{  }} - renders the value inside of the corresponding variable inside the DOM element. Expression holder
+
+Two Way Data Binding - UI control reflects the value of the underlying model and vice versa.

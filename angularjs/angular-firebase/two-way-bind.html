@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Two-Way Data Binding</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js"></script>
+</head>
+<body>
+  <div ng-app>
+    <div class="container">
+      <!-- Example of Two-Way Data Binding -->
+      <div>
+        <!-- Changing the underlying model directly changes the UI component. -->
+        <!-- Whatever value is stored in yourName variable is extracted and displayed in the enclosing DOM element. -->
+        <h2 style="color:blue;">One Way Data Binding? Cool!</h2>
+        <label>Name: </label>
+        <input type="text" ng-model="yourName" placeholder="Enter a name here."/>
+        <h3>Hello {{yourName}}!</h3>
+      </div>
+      <hr/>
+      <div>
+        <!-- UI control reflects value of the underlying model. -->
+        <h2 style="color:green;">Two Way Data Binding? Great!</h2>
+        <textarea type="text" ng-model="newName" placeholder="Enter some text."></textarea>
+        <a class="waves-effect waves-light btn" ng-click="yourName=newName">
+          Change Value
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
