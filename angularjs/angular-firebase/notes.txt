@@ -47,3 +47,16 @@ Each template instance gets its own scope, and $index is set to the item index o
 Create a new module:
 
   angular.module(name, [requires], [configFn])
+
+  * name - name of the module to create or retrieve
+  * requires - optional argument. If it is specified, then another module is created. Otherwise, the existing module is retrieved for further configuration
+  * configFn - optional argument. Configure the module.
+
+  Store the module inside a variable that is globally accessible. Used to associate controllers, directives, filters, etc.
+
+  Use a controller to establish the initial state of $scope and add behavior to the $scope object.
+
+  Usually set $scope to an object to prevent cluttering the $scope with numerous variables.
+
+ngRoute and ngView - Writing SPAs Easily
+----------------------------------------
