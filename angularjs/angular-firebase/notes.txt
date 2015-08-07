@@ -22,3 +22,17 @@ Two Complexities of MVC Frameworks
 ----------------------------------
   - View becomes complex: utilize a template engine such as Handlebars to dynamically generate front-end
   - Controller becomes complex: keep controllers simple by delegating only data transfer methods to the controller, and leaving the client to display the data
+
+ngApp directive - Autobootstrap AngularJS application
+                - Part of ng core module
+                - ng module is loaded by default when an AngularJS application is started
+                - Designates root element of the application
+                - Whenever AngularJS finds the ngApp directive, it loads the module associated with the directive.
+
+Directives: Markers on DOM element (such as attributes, element name, etc.)
+            - Directives tell AngularJS's HTML compiler to attach a specified behavior to that DOM element or even transform the DOM element and its children.
+
+Bootstrapping: AngularJS's initialization process.
+        Done in Two Ways
+            - Automatic Initialization
+            - Manual Initialization
