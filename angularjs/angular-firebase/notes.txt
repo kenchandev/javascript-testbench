@@ -40,3 +40,10 @@ Bootstrapping: AngularJS's initialization process.
 {{  }} - renders the value inside of the corresponding variable inside the DOM element. Expression holder
 
 Two Way Data Binding - UI control reflects the value of the underlying model and vice versa.
+
+ng-repeat directive instatiates a template once per item in the follection provided.
+Each template instance gets its own scope, and $index is set to the item index or key.
+
+Create a new module:
+
+  angular.module(name, [requires], [configFn])

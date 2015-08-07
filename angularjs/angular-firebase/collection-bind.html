@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>One-Way Data Binding</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js"></script>
+</head>
+<body>
+  <div class="container" ng-app="collectionApp">
+    <div ng-controller="EmployeeCtrl">
+      <h1>Employee Data:</h1>
+      In a list -
+      <ul class="collection">
+        <li class="collection-item" ng-repeat="employee in employeeData.employees">
+          Employee number {{$index}} is {{employee.name}}!
+        </li>
+      </ul>
+      <br/>
+      In a table -
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="employee in employeeData.employees">
+            <td>{{employee.name}}</td>
+            <td>{{employee.age}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var app = angular.module('collectionApp', []);
+
+    app.controller('EmployeeCtrl', ['$scope',
+      function($scope){
+        var Employee = function(name, age){
+          this.name = name;
+          this.age = age;
+        };
+
+        var getEmployees = function(){
+          return [
+            new Employee('First Employee', 56),
+            new Employee('Second Employee', 44),
+            new Employee('Third Employee', 32)
+          ];
+        };
+
+        $scope.employeeData = {
+          employees: getEmployees()
+        };
+      }
+    ]);
+  </script>
+</body>
+</html>
