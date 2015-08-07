@@ -1,0 +1,24 @@
+AngularJS - MV* Framework
+          - provide HTML with more functionality
+          - excellent documentation
+          - well-written books
+          - large community
+          - superb integration with frameworks such as Ionic
+
+Features
+--------
+  - ViewModel represents the model for the view and is bound to various UI elements.
+  - As the ViewModel changes, the UI elements update themselves. If a value is changed within any of the UI elements, the corresponding ViewModel gets updated. (two-way data binding)
+  - The model gets updated whenever the DOM is updated, and vice-versa applies.
+  - Use JavaScript objects for data binding.
+  - Simplify AJAX communication $http service.
+  - Provide a higher level abstraction than $http service with $resource service. Communicate with RESTful APIs.
+  - HTTP interceptors handle global errors, authentication or asynchronous/synchronous processing of request, etc.
+  - Directives teach HTML new tricks. Build custom HTML elements, attributes, etc.
+  - Dependency Injection
+  - AngularJS has excellent support for unit testing.
+
+Two Complexities of MVC Frameworks
+----------------------------------
+  - View becomes complex: utilize a template engine such as Handlebars to dynamically generate front-end
+  - Controller becomes complex: keep controllers simple by delegating only data transfer methods to the controller, and leaving the client to display the data
