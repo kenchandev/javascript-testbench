@@ -62,3 +62,27 @@ ngRoute and ngView - Writing SPAs Easily
 ----------------------------------------
 Configure which views are shown for which URLs using the $routeProvider service.
 This service comes from the ngRoute module via the angular-route.js library.
+
+Need angular-route.min.js library.
+
+Links must have a leading # in href attribute to prevent actual navigation to employees.html or departments.html pages.
+
+ng-view serves as a placeholder where HTML contents of various templates are rendered as per the current route.
+
+Other AngularJS Directives
+--------------------------
+ngShow
+ngHide
+ngChecked
+ngSelected
+
+* Best Practices for AngularJS Structure - https://
+docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF
+4Q9821Es/pub
+* Google JavaScript Style - http://google-styleguide.
+googlecode.com/svn/trunk/javascriptguide.xml
+* Best Practices for AngularJS - https://github.com/GrumpyWizards/Angular
+* AngularJS Style Guide - https://github.com/mgechev/angularjsstyle-
+guide
+
+http://yeoman.io - scaffold and establish initial folder structure

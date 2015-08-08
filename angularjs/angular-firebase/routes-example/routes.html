@@ -18,8 +18,31 @@
       <br/>
       <a href="#departments">Departments</a>
     </div>
-    
+
     <div ng-view></div>
   </div>
+
+  <script type="text/javascript">
+    var app = angular.module('routeApp', ['ngRoute']);
+
+    //  Configure several routes of the module using $routeProvider
+    //  Whenever the URL matches /employees, the employee.html template should be inserted into the ng-view placeholder of the index.html file with EmployeeCtrl as the controller.
+    app.config(function($routeProvider){
+      $routeProvider
+        .when('/employees', {
+          templateUrl: 'employee.html',
+          controller: 'EmployeeCtrl'
+        })
+        .when('/departments', {
+          templateUrl: 'department.html',
+          controller: 'DepartmentCtrl'
+        })
+        .otherwise({
+          redirectTo: '/'
+        });
+    });
+  </script>
+  <script type="text/javascript" src="employee.js"></script>
+  <script type="text/javascript" src="department.js"></script>
 </body>
 </html>
