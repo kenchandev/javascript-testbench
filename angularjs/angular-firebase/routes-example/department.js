@@ -1,4 +1,4 @@
-app.controller('DepartmentCtrl', ['scope', function($scope){
+app.controller('DepartmentCtrl', ['$scope', function($scope){
     var Department = function(abbreviatedName, name){
       this.abbreviatedName = abbreviatedName;
       this.name = name;
