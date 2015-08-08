@@ -39,8 +39,7 @@
   <script type="text/javascript">
     var app = angular.module('collectionApp', []);
 
-    app.controller('EmployeeCtrl', ['$scope',
-      function($scope){
+    app.controller('EmployeeCtrl', ['$scope', function($scope){
         var Employee = function(name, age){
           this.name = name;
           this.age = age;

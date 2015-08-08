@@ -60,3 +60,5 @@ Create a new module:
 
 ngRoute and ngView - Writing SPAs Easily
 ----------------------------------------
+Configure which views are shown for which URLs using the $routeProvider service.
+This service comes from the ngRoute module via the angular-route.js library.
