@@ -91,11 +91,40 @@ guide
 
 http://yeoman.io - scaffold and establish initial folder structure
 
-
-
-
-
+Prevent pollution of scope by having a single object with properties serve as multiple variables assigned to a scope.
 
 Working With Data
 ====================================
 ====================================
+
+- Dependency Injection
+- Filters and writing custom functions
+- Calling remote APIs using $http service and $resource service
+  ($resource is an abstraction on top of $http service and makes communication with RESTful APIs easier)
+
+Dependency Injection - process of injecting dependencies (or sevices) into another (client) object
+--------------------
+
+(also referred as Inversion of Control - IoC)
+
+Without it, a client has to create instances of dependent objects itself, whereas with dependency injection, these objects are handed to the client by someone else.
+
+Dependency Injection is a software design pattern in which an object is given its dependencies, rather than the object creating them itself. It is about removing the hard-coded dependencies and making it possible to change them whenever needed.
+
+http://anandmanisankar.com/posts/angularjs-dependency-injection-demystified/
+
+Example:
+
+    var app = angular.module("DemoApp", []);
+
+    //  Controller is injected with $scope and $http as dependencies
+    app.controller("DemoController", function ($scope, $http) {
+      $http.get('https://api.github.com/users/angular/repos')
+          .success(function (repos) {
+          $scope.repos = repos
+      });
+    });
+
+    //  The controller doesn't know/care how these objects are created. It only knows the contract provided by these objects and how to consume them. AngularJS knows the dependencies by their specific names, so they can be injected in any order!
+
+When the user switches route or reloads a page, AngularJS cleans up the current controller. Hence, its better to not persist data within a controller. Services provide a means for keeping data around for the lifetime of an application while they can be used across different controllers in a consistent manner.
