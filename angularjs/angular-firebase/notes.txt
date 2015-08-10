@@ -267,4 +267,6 @@ Promises - for deferred and asynchronous computations.
           //  called asyncrhonously if an error occurs or server returns response with an error status
          });
 
-    
+  $http service is low-level when dealing with RESTful APIs. Use $resource service. Methods are mapped to corresponding HTTP request verbs.
+
+  
