@@ -179,3 +179,92 @@ Filters
 AngularJS introduces filters for formatting values of an expression for display, filtering values from an array, etc. (number, currency, date, etc.)
 
 ng-repeat=" ... | filter: ... "
+
+{{ expression | filter }}
+
+Promises
+--------
+Synchronous calls block further blocks of code from executing until calls complete.
+Asynchronous calls via callbacks (deep nested callbacks make code difficult to read and write)
+
+Promises - for deferred and asynchronous computations.
+
+  Four states of a Promise:
+    - Pending: Initial state, not fulfilled or rejected
+    - Fulfilled: Successful operation
+    - Rejected: Failed operation
+    - Settled: Either fulfilled or rejected, not pending
+
+  new Promise(function(resolve, reject){
+    ...
+  });
+
+  Promises allow asynchronous method calls to return a value similar to a synchronous call.
+  A final value is not returned by an asynchronous method, rather, a Promise object is.
+  The 'then' method is called when either the pending promise has been fulfilled with a value or rejected with a reason.
+
+  $q service (In AngularJS, modeled after ES6 promises)
+  ----------
+
+    Example snippet of code for regular promise:
+
+      function asyncGreet(name){
+        return $q(function(resolve, reject){
+          setTimeout(function(){
+            if(okToGreet(name)){
+              resolve('Hello World!');
+            }
+            else{
+              reject('Oh no! No hello world!');
+            }
+          });
+        }, 1000);
+      };
+
+      var promise = asyncGreet('Robin Hood');
+      promise.then(function(greeting){
+        alert('Success: ' + greeting);
+      }, function(reason){
+        alert('Failed: ' + reason);
+      });
+
+      ================================================
+
+      function asyncGreet(name){
+        var deferred = $q.defer();
+
+        setTimeout(function(){
+          deferred.notify('About to greet Hello World.'); //  Can be called multiple times
+
+          if(okToGreet(name)){
+            deferred.resolve('Hello World!');
+          }
+          else{
+            deferred.reject('Oh no! No hello world!');
+          }
+        }, 1000);
+        return deferred.promise;
+      }
+
+      var promise = asyncGreet('Robin Hood');
+
+      promise.then(function(greeting){
+        alert('success');
+      }, function(reason){
+        alert('failed');
+      }, function(update){
+        alert('notification');
+      });
+
+  $http service - core AngularJS service (communicates with remote HTTP servers is XMLHttpRequest object)
+  -------------
+
+    $http.get('/someURL')
+         .success(function(data, status, headers, config){
+          //  this callback is called asynchronously when the response is available
+         })
+         .error(function(data, status, headers, config){
+          //  called asyncrhonously if an error occurs or server returns response with an error status
+         });
+
+    
