@@ -1,3 +1,5 @@
 Over-Simplified Version of the following example:
 
 http://tech-blog.maddyzone.com/javascript/use-multiple-ng-view-single-page
+
+ng-include: Load a template from a given path. It fetches, compiles and includes an external HTML fragment.
