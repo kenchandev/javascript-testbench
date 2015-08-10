@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Routes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+  <script type="text/javascript" src="employee.svc.js"></script>
+  <script type="text/javascript" src="employee.fltr.js"></script>
+</head>
+<body class="container" ng-app="filterApp">
+  <div ng-controller="EmployeeController">
+    <h1>Employee Data:</h1>
+    <h3>In a table with the filter:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="employee in employeeData.employees | seniorEmployeeFilter">
+          <td>{{employee.name}}</td>
+          <td>{{employee.age}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <h3>In a list without the filter:</h3>
+    <ul class="collection">
+      <li class="collection-item" ng-repeat="employee in employeeData.employees">
+        Employee number {{$index}} is {{employee.name}}. Employee Age: {{employee.age}}
+      </li>
+    </ul>
+  </div>
+</body>
+</html>

@@ -172,3 +172,10 @@ app.controller('EmployeeController', ['$scope', 'employeeService', function($sco
 app.controller('EmployeeController', function($scope, employeeService){});      --  implicit annotation (Angular tries to infer the names of the dependencies)
                                                                                 --  don't use if minifying
                                                                                 --  ng-annotate can automate the process of adding or removing AngularJS dependency injection annotations (https://github.com/olov/ng-annotate).
+
+Filters
+-------
+
+AngularJS introduces filters for formatting values of an expression for display, filtering values from an array, etc. (number, currency, date, etc.)
+
+ng-repeat=" ... | filter: ... "
