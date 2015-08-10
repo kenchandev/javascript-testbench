@@ -1,0 +1,3 @@
+Over-Simplified Version of the following example:
+
+http://tech-blog.maddyzone.com/javascript/use-multiple-ng-view-single-page

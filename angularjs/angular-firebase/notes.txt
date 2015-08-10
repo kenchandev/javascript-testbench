@@ -5,6 +5,10 @@ AngularJS - MV* Framework
           - large community
           - superb integration with frameworks such as Ionic
 
+AngularJS Rationale and Data Binding
+====================================
+====================================
+
 Features
 --------
   - ViewModel represents the model for the view and is bound to various UI elements.
@@ -86,3 +90,12 @@ googlecode.com/svn/trunk/javascriptguide.xml
 guide
 
 http://yeoman.io - scaffold and establish initial folder structure
+
+
+
+
+
+
+Working With Data
+====================================
+====================================
