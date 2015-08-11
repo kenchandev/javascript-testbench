@@ -1,3 +1,6 @@
+<!-- http://bl.ocks.org/mbostock/3883245
+http://big-elephants.com/2014-06/unrolling-line-charts-d3js/ -->
+
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
@@ -97,12 +100,6 @@ d3.tsv("data.tsv", function(error, data) {
       .datum(data)
       .attr("d", transparentLineFunction)
       .style("display", "none");
-      // .transition()
-      // .duration(3000)
-      // .attr("d", function(d){
-      //   console.log(lineFunction(d));
-      //   return lineFunction(d);
-      // });
 
   var pathList = transparentPath[0][0].pathSegList;
 
