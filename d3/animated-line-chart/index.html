@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+/*.x.axis path {
+  display: none;
+}*/
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+</style>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+<script>
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var parseDate = d3.time.format("%d-%b-%y").parse;
+
+var x = d3.time.scale()
+    .range([0, width]);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var movingLineX = d3.scale.linear().range([0, width]);
+var movingLineY = d3.scale.linear().range([0, height]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var svg = d3.select("body").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.tsv("data.tsv", function(error, data) {
+  if (error) throw error;
+
+  data.forEach(function(d) {
+    d.date = parseDate(d.date);
+    d.close = +d.close;
+  });
+
+  var standardLineFunction = d3.svg.line()
+      .x(function(d){ return movingLineX(d.x); })
+      .y(function(d){ return movingLineY(d.y); });
+
+  var transparentLineFunction = d3.svg.line()
+      .x(function(d) { return x(d.date); })
+      .y(function(d) { return y(d.close); });
+
+  //  Must map corresponding min/max domain to range defined previously.
+  x.domain(d3.extent(data, function(d) { return d.date; }));
+  y.domain(d3.extent(data, function(d) { return d.close; }));
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Price ($)");
+
+  var transparentPath = svg.append("path")
+      .attr("class", "transparent-line")
+      .datum(data)
+      .attr("d", transparentLineFunction)
+      .style("display", "none");
+      // .transition()
+      // .duration(3000)
+      // .attr("d", function(d){
+      //   console.log(lineFunction(d));
+      //   return lineFunction(d);
+      // });
+
+  var pathList = transparentPath[0][0].pathSegList;
+
+  var extractedXY = _.map(pathList, function(d, i){
+    return {
+      x: pathList.getItem(i).x,
+      y: pathList.getItem(i).y
+    };
+  }).reverse();
+
+  movingLineX.domain(d3.extent(extractedXY, function(d) { return d.x; }));
+  movingLineY.domain(d3.extent(extractedXY, function(d) { return d.y; }));
+
+  var getSmoothInterpolation = function(data){
+      var interpolate = d3.scale.linear()
+                          .domain([0, 1])
+                          .range([1, extractedXY.length + 1]);
+
+      return function(t){
+        var flooredX = Math.floor(interpolate(t));
+        var interpolatedLine = extractedXY.slice(0, flooredX);
+
+        if(flooredX > 0 && flooredX < extractedXY.length){
+          var weight = interpolate(t) - flooredX;
+          var weightedLineAverage = extractedXY[flooredX].y * weight + extractedXY[flooredX - 1].y * (1 - weight);
+          interpolatedLine.push({
+            "x": interpolate(t) - 1,
+            "y": weightedLineAverage
+          });
+        }
+
+        return standardLineFunction(interpolatedLine);
+      };
+    };
+
+  svg.append("path")
+      .attr("class", "line")
+      .transition()
+      .duration(5000)
+      .attrTween('d', getSmoothInterpolation);
+
+});
+
+</script>
