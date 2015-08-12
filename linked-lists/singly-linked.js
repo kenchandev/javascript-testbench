@@ -28,7 +28,7 @@ LinkedList.prototype.append = function(data){
   else{
     current = this.head;
 
-    while(current.next){
+    while(current.getNext()){
       current = current.getNext();
     }
 
@@ -62,7 +62,7 @@ LinkedList.prototype.insert = function(position, data){
     else{
       while(index++ < position){
         previous = current;
-        current = current.next;
+        current = current.getNext();
       }
       node.setNext(current);
       previous.setNext(node);
@@ -87,54 +87,90 @@ LinkedList.prototype.remove = function(){
 };
 
 /**
- *
- * @param {}
- * @return {}
+ * Finds an element and retrieves its position from the linked list.
+ * @param {int}
+ * @return {int}
  */
-LinkedList.prototype.indexOf = function(){
+LinkedList.prototype.indexOf = function(data){
+  var current = this.head;
+  var index = -1;
 
+  while(current){
+    if(data === current.getData()){
+      return index;
+    }
+    index++;
+    current = current.getNext();
+  }
+
+  return -1;
 };
 
 /**
- *
- * @param {}
- * @return {}
+ * Removes an element from a specified position in the linked list.
+ * @param {int}
+ * @return {int}
  */
-LinkedList.prototype.removeAt = function(){
+LinkedList.prototype.removeAt = function(position){
+  //  Check if out-of-bounds
+  if(position >= 0 && position <= this.length){
+    var current = this.head;
+    var previous;
+    var index = 0;
 
+    if(position === 0){
+      //  Remove the first element.
+      this.head = current.getNext();
+    }
+    else{
+      while(index++ < position){
+        previous = current;
+        current = current.getNext();
+      }
+
+      //  "Skip" over an element.
+      previous.setNext(current.getNext());
+    }
+
+    this.length--;
+    return current.getData();
+  }
+  else{
+    return null;
+  }
 };
 
 /**
- *
- * @param {}
- * @return {}
+ * Check if the linked list has not elements or not.
+ * @param {void}
+ * @return {int}
  */
 LinkedList.prototype.isEmpty = function(){
   return this.length === 0;
 };
 
 /**
- *
- * @param {}
- * @return {}
+ * Get the number of elements within the linked list.
+ * @param {void}
+ * @return {int}
  */
 LinkedList.prototype.size = function(){
   return this.length;
 };
 
 /**
- *
- * @param {}
- * @return {}
+ * Get the head of the linked list.
+ * @param {void}
+ * @return {Node}
  */
 LinkedList.prototype.getHead = function(){
   return this.head;
 };
 
 /**
- *
- * @param {}
- * @return {}
+ * Overwrite the default toString() method.
+ * @param {void}
+ * @return {String}
  */
 LinkedList.prototype.toString = function(){
   var string = '[';
