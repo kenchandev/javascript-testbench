@@ -78,12 +78,13 @@ LinkedList.prototype.insert = function(position, data){
 };
 
 /**
- *
- * @param {}
- * @return {}
+ * Removes an element from a specified position in the linked list.
+ * @param {int}
+ * @return {int}
  */
-LinkedList.prototype.remove = function(){
-
+LinkedList.prototype.remove = function(data){
+  var index = this.indexOf(data);
+  return this.removeAt(index);
 };
 
 /**
@@ -107,7 +108,7 @@ LinkedList.prototype.indexOf = function(data){
 };
 
 /**
- * Removes an element from a specified position in the linked list.
+ * Helper function for removing an element from a specified position and retrieving its value.
  * @param {int}
  * @return {int}
  */
