@@ -18,5 +18,8 @@
     "node"
   ],
   "author": "Ken Chan <thiskenchan@gmail.com> (http://kenchan.me)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "mocha": "^2.2.5"
+  }
 }
