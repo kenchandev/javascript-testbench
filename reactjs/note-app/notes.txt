@@ -1,0 +1,110 @@
+Trying out React.js, Webpack and Flux based on http://survivejs.com/webpack_react/introduction/
+
+Webpack - module bundling solution
+          (grab assets and provide a single item to serve to client)
+          (manages this via configuration)
+
+React - companent-based view abstraction
+
+Drag-and-Drop Magic:
+
+  https://gaearon.github.io/react-dnd/
+
+Kanban: developed at Toyota (project management tool, track the status of tasks)
+        (Notes will move through Lanes that each represent a stage)
+    (Example stages: Todo, Doing, Done)
+        (Notes contain information about the task itself)
+
+Ex: Trello!
+
+SPAs tend to feature extremely heavy and complex libraries. Ideally, load the assets that you need per page.
+
+Numerous Build Systems:
+  - Make
+  - Grunt.js (The JavaScript Task Runner): has plugin architecture
+
+  module.exports = function(grunt){
+    grunt.initConfig({
+      jshint: {
+        ...
+      },
+      watch: {
+        ...
+      }
+    });
+
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+
+    grunt.registerTask('default', ['jshint']);
+  }
+
+  Defined two basic tasks related to linting tool jshint.
+
+  - Gulp.js
+
+  Does not rely on configuration per plugin.
+  Based on piping.
+
+  *** sources: match to some file
+  *** filters: perform some operations (i.e.: convert to JavaScript)
+  *** sinks: location/destination to output to
+
+  var gulp
+  var coffee
+  car concat
+
+    ...
+
+  var paths = {
+    scripts: ['client/js/**/*.coffee', '!client/external/**/*.coffee']
+  };
+
+  gulp.task('clean', function(cb){
+    del(['build'], cb);
+  });
+
+  //  minify and transcribe JS code
+  gulp.task('scripts', ['clean'], function(){
+    return gulp.src(paths.scripts)
+              .pipe(sourcemaps.init())
+              .pipe(coffee())
+              .pipe(concat('all.min.js'))
+              .pipe(sourcemaps.write())
+              .pipe(gulp.dest('build/js'));
+  });
+
+  //  Rerun when a file changes.
+  gulp.task('watch', function(){
+    gulp.watch(paths.scripts, ['scripts'])
+  });
+
+  //  default task
+  gulp.task('default', ['watch', 'scripts'])
+
+Browserify: bundle CommonJS modules together (hooked with Gulp.js)
+
+Webpack extends require and allows behavior to be customized via loaders. Provides plugins for tasks,
+
+  var webpack = require('webpack');
+
+  module.exports = {
+    entry: './entry.js',
+    output: {
+      path: __dirname,
+      filename: 'bundle.js'
+    },
+    module: {
+      loaders: [
+        {
+          test: /\.css$/,
+          loaders: ['style', 'css']
+        }
+      ]
+    },
+    plugins: [
+      new webpack.optimize.UglifyJsPlugin()
+    ]
+  }
+
+  Hot Module Replacement (HMR) has the functionality of LiveReload/Browsersync for faster iterating since the browser is automatically refreshed to account for various changes, but HMR only patches the component that changed while retaining application state.

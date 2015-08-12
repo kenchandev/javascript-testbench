@@ -1,0 +1,11 @@
+Trying out React.js, Webpack and Flux based on http://survivejs.com/webpack_react/introduction/
+
+Webpack - bundling solution
+          (grab assets and provide a single item to serve to client)
+          (manages this via configuration)
+
+React - companent-based view abstraction
+
+Drag-and-Drop Magic:
+
+  https://gaearon.github.io/react-dnd/
