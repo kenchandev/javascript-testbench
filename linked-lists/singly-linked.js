@@ -13,7 +13,7 @@ var LinkedList = module.exports = function LinkedList(){
 };
 
 /**
- * Add a new item to the end of the list.
+ * Add a new item to the end of the linked list.
  * @param {int}
  * @return {void}
  */
@@ -41,12 +41,40 @@ LinkedList.prototype.append = function(data){
 };
 
 /**
- *
- * @param {}
- * @return {}
+ * Insert an element at any position within the linked list.
+ * @param {int}
+ * @param {int}
+ * @return {boolean}
  */
 LinkedList.prototype.insert = function(position, data){
+  //  Check if out-of-bounds
+  if(position >= 0 && position <= this.length){
+    var node = new Node(data);
+    var current = this.head;
+    var previous;
+    var index = 0;
 
+    //  Inserting into the first position.
+    if(position === 0){
+      node.setNext(current);
+      this.head = node;
+    }
+    else{
+      while(index++ < position){
+        previous = current;
+        current = current.next;
+      }
+      node.setNext(current);
+      previous.setNext(node);
+    }
+
+    //  Don't forget to increment the length!
+    this.length++;
+    return true;
+  }
+  else{
+    return false;
+  }
 };
 
 /**
