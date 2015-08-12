@@ -1,0 +1,22 @@
+{
+  "name": "linked-lists",
+  "version": "1.0.0",
+  "description": "Generate variations of linked lists",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo 'hello'"
+  },
+  "keywords": [
+    "linked",
+    "lists",
+    "circular",
+    "singly",
+    "doubly",
+    "node"
+  ],
+  "author": "Ken Chan <thiskenchan@gmail.com> (http://kenchan.me)",
+  "license": "MIT"
+}

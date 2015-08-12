@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * A node is an element of a list.
  * It is comprised of two items - the data and a reference to the next node.

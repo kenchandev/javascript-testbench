@@ -1,3 +1,5 @@
+'use strict';
+
 var Node = require('./node');
 
 /**
@@ -7,7 +9,7 @@ var Node = require('./node');
  * @param {void}
  * @return {LinkedList}
  */
-var LinkedList = module.exports = function LinkedList(){
+var SinglyLinkedList = module.exports = function SinglyLinkedList(){
   this.head = null;
   this.length = 0;
 };
@@ -17,7 +19,7 @@ var LinkedList = module.exports = function LinkedList(){
  * @param {int}
  * @return {void}
  */
-LinkedList.prototype.append = function(data){
+SinglyLinkedList.prototype.append = function(data){
   var current;
   var node = new Node(data);
 
@@ -46,7 +48,7 @@ LinkedList.prototype.append = function(data){
  * @param {int}
  * @return {boolean}
  */
-LinkedList.prototype.insert = function(position, data){
+SinglyLinkedList.prototype.insert = function(position, data){
   //  Check if out-of-bounds
   if(position >= 0 && position <= this.length){
     var node = new Node(data);
@@ -82,7 +84,7 @@ LinkedList.prototype.insert = function(position, data){
  * @param {int}
  * @return {int}
  */
-LinkedList.prototype.remove = function(data){
+SinglyLinkedList.prototype.remove = function(data){
   var index = this.indexOf(data);
   return this.removeAt(index);
 };
@@ -92,7 +94,7 @@ LinkedList.prototype.remove = function(data){
  * @param {int}
  * @return {int}
  */
-LinkedList.prototype.indexOf = function(data){
+SinglyLinkedList.prototype.indexOf = function(data){
   var current = this.head;
   var index = -1;
 
@@ -112,7 +114,7 @@ LinkedList.prototype.indexOf = function(data){
  * @param {int}
  * @return {int}
  */
-LinkedList.prototype.removeAt = function(position){
+SinglyLinkedList.prototype.removeAt = function(position){
   //  Check if out-of-bounds
   if(position >= 0 && position <= this.length){
     var current = this.head;
@@ -146,7 +148,7 @@ LinkedList.prototype.removeAt = function(position){
  * @param {void}
  * @return {int}
  */
-LinkedList.prototype.isEmpty = function(){
+SinglyLinkedList.prototype.isEmpty = function(){
   return this.length === 0;
 };
 
@@ -155,7 +157,7 @@ LinkedList.prototype.isEmpty = function(){
  * @param {void}
  * @return {int}
  */
-LinkedList.prototype.size = function(){
+SinglyLinkedList.prototype.size = function(){
   return this.length;
 };
 
@@ -164,7 +166,7 @@ LinkedList.prototype.size = function(){
  * @param {void}
  * @return {Node}
  */
-LinkedList.prototype.getHead = function(){
+SinglyLinkedList.prototype.getHead = function(){
   return this.head;
 };
 
@@ -173,7 +175,7 @@ LinkedList.prototype.getHead = function(){
  * @param {void}
  * @return {String}
  */
-LinkedList.prototype.toString = function(){
+SinglyLinkedList.prototype.toString = function(){
   var string = '[';
   var current = this.head;
 
