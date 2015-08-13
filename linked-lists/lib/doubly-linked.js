@@ -19,3 +19,12 @@ var DoublyLinkedList = module.exports = function DoublyLinkedList(){
 DoublyLinkedList.prototype.insert = function(position, data){
 
 };
+
+/**
+ *
+ *
+ *
+ */
+DoublyLinkedList.prototype.removeAt = function(position){
+
+};

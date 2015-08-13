@@ -3,11 +3,8 @@
   "version": "1.0.0",
   "description": "Generate variations of linked lists",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "echo 'hello'"
+    "test": "mocha --watch --reporter nyan test"
   },
   "keywords": [
     "linked",
@@ -20,6 +17,8 @@
   "author": "Ken Chan <thiskenchan@gmail.com> (http://kenchan.me)",
   "license": "MIT",
   "dependencies": {
-    "mocha": "^2.2.5"
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5",
+    "sinon": "^1.15.4"
   }
 }
