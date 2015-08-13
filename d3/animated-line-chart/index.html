@@ -35,6 +35,9 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
+var index;
+var extractedXY = [];
+
 var parseDate = d3.time.format("%d-%b-%y").parse;
 
 var x = d3.time.scale()
@@ -43,8 +46,10 @@ var x = d3.time.scale()
 var y = d3.scale.linear()
     .range([height, 0]);
 
-var movingLineX = d3.scale.linear().range([0, width]);
-var movingLineY = d3.scale.linear().range([0, height]);
+var movingLineX = d3.scale.linear()
+                    .range([0, width]);
+var movingLineY = d3.scale.linear()
+                    .range([0, height]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -96,19 +101,21 @@ d3.tsv("data.tsv", function(error, data) {
       .text("Price ($)");
 
   var transparentPath = svg.append("path")
-      .attr("class", "transparent-line")
+      .attr("class", "line")
       .datum(data)
       .attr("d", transparentLineFunction)
       .style("display", "none");
 
   var pathList = transparentPath[0][0].pathSegList;
 
-  var extractedXY = _.map(pathList, function(d, i){
-    return {
-      x: pathList.getItem(i).x,
-      y: pathList.getItem(i).y
-    };
-  }).reverse();
+  index = pathList.numberOfItems;
+
+  while(index-- > 0){
+    extractedXY.push({
+      x: pathList.getItem(index).x,
+      y: pathList.getItem(index).y
+    });
+  }
 
   movingLineX.domain(d3.extent(extractedXY, function(d) { return d.x; }));
   movingLineY.domain(d3.extent(extractedXY, function(d) { return d.y; }));
@@ -144,3 +151,5 @@ d3.tsv("data.tsv", function(error, data) {
 });
 
 </script>
+</body>
+</html>
