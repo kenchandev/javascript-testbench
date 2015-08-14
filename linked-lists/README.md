@@ -8,7 +8,7 @@ This simple npm module provides three rudimentary variations of linked lists:
 
 ## Testing
 
-Tested using the Mocha TDD/BDD framework and the Chai assertion library.<br/>Watch out for the Nyan Cat as all the tests pass with flying colors!
+Tested using the Mocha TDD/BDD framework and the Chai assertion library.<br/><br/>Watch out for the Nyan Cat as all the tests pass with flying colors!
 
 `npm test`
 
