@@ -1,12 +1,17 @@
 'use strict';
 
+var Node = module.exports = {
+  singly: SinglyNode,
+  doubly: DoublyNode
+};
+
 /**
- * A node is an element of a list.
+ * This node represents an element of a singly linked list.
  * It is comprised of two items - the data and a reference to the next node.
  * @param {int}
  * @return {Node}
  */
-var Node = module.exports = function Node(data){
+function SinglyNode(data){
   this.data = data;
   this.next = null;
 };
@@ -16,7 +21,7 @@ var Node = module.exports = function Node(data){
  * @param {void}
  * @return {int}
  */
-Node.prototype.getData = function(){
+SinglyNode.prototype.getData = function(){
   return this.data;
 };
 
@@ -25,7 +30,7 @@ Node.prototype.getData = function(){
  * @param {void}
  * @return {Node}
  */
-Node.prototype.getNext = function(){
+SinglyNode.prototype.getNext = function(){
   return this.next;
 };
 
@@ -34,6 +39,63 @@ Node.prototype.getNext = function(){
  * @param {Node}
  * @return {void}
  */
-Node.prototype.setNext = function(next){
+SinglyNode.prototype.setNext = function(next){
   this.next = next;
+};
+
+/**
+ * This node represents an element of a doubly linked list.
+ * It is comprised of three items - the data, a reference to the previous node and a reference to the next node.
+ * @param {int}
+ * @return {Node}
+ */
+function DoublyNode(data){
+  this.data = data;
+  this.next = null;
+  this.prev = null;
+};
+
+/**
+ * Getter method for obtaining data of a node.
+ * @param {void}
+ * @return {int}
+ */
+DoublyNode.prototype.getData = function(){
+  return this.data;
+};
+
+/**
+ * Getter method for obtaining subsequent node of a node.
+ * @param {void}
+ * @return {Node}
+ */
+DoublyNode.prototype.getNext = function(){
+  return this.next;
+};
+
+/**
+ * Setter method for settting subsequent node for a node.
+ * @param {Node}
+ * @return {void}
+ */
+DoublyNode.prototype.setNext = function(next){
+  this.next = next;
+};
+
+/**
+ * Getter method for obtaining previous node of a node.
+ * @param {void}
+ * @return {Node}
+ */
+DoublyNode.prototype.getPrev = function(){
+  return this.prev;
+};
+
+/**
+ * Setter method for settting previous node for a node.
+ * @param {Node}
+ * @return {void}
+ */
+DoublyNode.prototype.setPrev = function(next){
+  this.prev = prev;
 };

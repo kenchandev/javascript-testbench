@@ -1,10 +1,8 @@
 var expect = require('chai').expect;
 var structures = require('../index');
 
-var Node = structures.node;
-var SinglyLinkedList = structures.singly;
-var DoublyLinkedList = structures.doubly;
-var CircularLinkedList = structures.circular;
+var Node = structures.node.singly;
+var SinglyLinkedList = structures.list.singly;
 
 describe('Node', function(){
   var node;
@@ -22,12 +20,4 @@ describe('Node', function(){
 
     expect(node.getNext().getData()).to.equal(6);
   });
-});
-
-describe('Singly Linked List', function(){
-
-});
-
-describe('Doubly Linked List', function(){
-
 });

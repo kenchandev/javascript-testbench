@@ -1,6 +1,6 @@
 'use strict';
 
-var Node = require('./node');
+var Node = require('./node').singly;
 
 /**
  * A linked list is a linear data structure where each element is a separate object.
@@ -58,8 +58,13 @@ SinglyLinkedList.prototype.insert = function(position, data){
 
     //  Inserting into the first position.
     if(position === 0){
-      node.setNext(current);
-      this.head = node;
+      if(!head){
+        this.head = node;
+      }
+      else{
+        node.setNext(current);
+        this.head = node;
+      }
     }
     else{
       while(index++ < position){
