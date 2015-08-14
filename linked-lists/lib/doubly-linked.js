@@ -14,6 +14,16 @@ var DoublyLinkedList = module.exports = function DoublyLinkedList(){
 };
 
 /**
+ * Add a new item to the end of the linked list.
+ * @param {int}
+ * @return {void}
+ */
+SinglyLinkedList.prototype.append = function(data){
+
+  this.length++;
+};
+
+/**
  * Insert an element at any position within the linked list
  * @param {int}
  * @param {int}
@@ -52,8 +62,28 @@ DoublyLinkedList.prototype.insert = function(position, data){
       this.tail = node;
     }
     else{
-      
+      current = this.head;
+
+      while(index++ < position){
+        previous = current;
+        current = current.getNext();
+      }
+
+      //  Set next references.
+      node.setNext(current);
+      previous.setNext(node);
+
+      //  Set previous references.
+      current.setPrev(node);
+      node.setPrev(previous;)
     }
+
+    //  Don't forget to increment the length!
+    this.length++;
+    return true;
+  }
+  else{
+    return false;
   }
 };
 
