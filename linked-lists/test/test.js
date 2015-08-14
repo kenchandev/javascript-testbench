@@ -4,7 +4,7 @@ var structures = require('../index');
 var Node = structures.node;
 var SinglyLinkedList = structures.singly;
 var DoublyLinkedList = structures.doubly;
-var CircularlyLinkedList = structures.circularly;
+var CircularLinkedList = structures.circular;
 
 describe('Node', function(){
   var node;
@@ -29,5 +29,5 @@ describe('Singly Linked List', function(){
 });
 
 describe('Doubly Linked List', function(){
-  
+
 });
