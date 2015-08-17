@@ -1,16 +1,22 @@
-# Linked Lists
+# Sorting Algorithms
 
-This simple npm module provides three rudimentary variations of linked lists:
+This simple npm module provides five rudimentary sorting algorithms:
 
-- Singly Linked Lists
-- Doubly Linked Lists
-- Circular Linked Lists
+- Bubble Sort
+- Insertion Sort
+- Selection Sort
+- Merge Sort
+- Quick Sort
 
-## Singly Linked List Methods
+## Future Plans
 
-## Doubly Linked List Methods
+The primary goal is to implement support for as many sorting algorithms as possible. Hence the following is a list of algorithms to be later added in:
 
-## Circular Linked List Methods
+- Radix Sort
+- Heap Sort
+- Bucket Sort
+- Counting Sort
+- Shell Sort
 
 ## Testing
 
