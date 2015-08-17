@@ -1,23 +1,51 @@
+var _ = require('lodash');
 var expect = require('chai').expect;
-var structures = require('../index');
+var sort = require('../index');
 
-var Node = structures.node.singly;
-var SinglyLinkedList = structures.list.singly;
+var bubbleSort = sort.bubble;
+var insertionSort = sort.insertion;
+var selectionSort = sort.selection;
 
-describe('Node', function(){
-  var node;
+describe('Sorting Algorithms', function(){
+  var exampleArrays;
+  var sortedArray;
 
   before(function(){
-    node = new Node(5);
+    exampleArrays = {
+      bubble: null,
+      selection: null,
+      insertion: null,
+      merge: null,
+      quick: null
+    };
+
+    _.forIn(exampleArrays, function(value, key){
+      exampleArrays[key] = [8, 9, 5, 3, 6, 10, 2];
+    });
+
+    sortedArray = [2, 3, 5, 6, 8, 9, 10];
   });
 
-  it('Node has value 5.', function(){
-    expect(node.getData()).to.equal(5);
-  });
-  it('Node is assigned a next element with value 6.', function(){
-    var nextNode = new Node(6);
-    node.setNext(nextNode);
+  //  Note: All arrays are sorted in-place.
 
-    expect(node.getNext().getData()).to.equal(6);
+  it('Bubble sort algorithm works.', function(){
+    var unsortedArray = exampleArrays.bubble;
+
+    bubbleSort(unsortedArray);
+    expect(unsortedArray).to.eql(sortedArray);
+  });
+
+  it('Insertion sort algorithm works.', function(){
+    var unsortedArray = exampleArrays.insertion;
+
+    insertionSort(unsortedArray);
+    expect(unsortedArray).to.eql(sortedArray);
+  });
+
+  it('Selection sort algorithm works.', function(){
+    var unsortedArray = exampleArrays.selection;
+
+    selectionSort(unsortedArray);
+    expect(unsortedArray).to.eql(sortedArray);
   });
 });

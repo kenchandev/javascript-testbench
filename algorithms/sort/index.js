@@ -7,10 +7,10 @@
 
 (function(){
   module.exports = {
-    bubbleSort: require('./lib/bubble_sort'),
-    selectionSort: require('./lib/selection_sort'),
-    insertionSort: require('./lib/insertion_sort'),
-    mergeSort: require('./lib/merge_sort'),
-    quickSort: require('./lib/quick_sort')
+    bubble: require('./lib/bubble_sort'),
+    selection: require('./lib/selection_sort'),
+    insertion: require('./lib/insertion_sort'),
+    merge: require('./lib/merge_sort'),
+    quick: require('./lib/quick_sort')
   };
 }());

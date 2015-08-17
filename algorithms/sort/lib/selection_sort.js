@@ -37,7 +37,7 @@ var swap = require('./swap');
 
       //  Perform the swap once the smallest element is found.
       if(i !== posMin){
-        swap(i, posMin);
+        swap(arr, i, posMin);
       }
     }
   };
