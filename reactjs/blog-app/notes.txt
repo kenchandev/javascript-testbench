@@ -1,0 +1,8 @@
+React.js - render components on both client and server.
+
+Benefits
+========
+    1. Search engine bots and other crawlers can easily crawl pages.
+    2. User experience is consistent and improved for users.
+
+Isomorphic JavaScript - Run the same code on the server as the client. Improves performance of single page web applications.
