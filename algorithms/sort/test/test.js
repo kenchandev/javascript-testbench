@@ -26,7 +26,7 @@ describe('Sorting Algorithms', function(){
     sortedArray = [2, 3, 5, 6, 8, 9, 10];
   });
 
-  //  Note: All arrays are sorted in-place.
+  //  Note: All arrays are sorted in-place using their actual references.
 
   it('Bubble sort algorithm works.', function(){
     var unsortedArray = exampleArrays.bubble;

@@ -1,15 +1,7 @@
-Various assortment of JavaScript data structures and algorithms...
- 
-- Arrays
-- Linked Lists
-- Queues
-- Sets
-- Stack
+# Objective
 
-Upcoming...
+The primary goal of this repository is to experiment with new and existing technologies and concepts. Ultimately, a robust guide can be written to guide others through this extensive codebase and teach others based on my own experiences.
 
-- Binary Search Trees
-- Graphs
-- Visualization for each data structure.
+## License
 
-...
+MIT  
