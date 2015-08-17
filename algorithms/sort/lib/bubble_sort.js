@@ -4,6 +4,7 @@
   /**
    * Bubble Sort: O(n^2) algorithm for naively sorting an array of elements
    *              The array is sorted in ascending order by performing multiple swaps.
+   *              Finds the largest element in a given subset, and gradually swaps it towards the right.
    * 45 67 12 34 25 39
    *
    * Example iteration:
@@ -23,7 +24,7 @@
       for(var j = 0; j < length-i-1; j++){
         //  If the left element is greater than the right element, swap.
         if(arr[j] > arr[j+1]){
-          swap(j, j+1);
+          swap(arr, j, j+1);
         }
       }
     }
@@ -32,6 +33,8 @@
   /**
    * Auxiliary function for swapping two elements inside an array.
    * @param {Array}
+   * @param {int}
+   * @param {int}
    * @return {void}
    */
   var swap = function(arr, pos1, pos2){
