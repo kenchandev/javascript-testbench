@@ -21,15 +21,17 @@
 
   /**
    * Adds a new item to the associative array.
-   * @param {}
-   * @return {}
+   * @param {*}
+   * @param {*}
+   * @return {void}
    */
   AssociativeArray.prototype.set = function(key, value){
-
+    this.items[key] = value;
   };
 
   /**
    *
    *
    */
+   
 }());
