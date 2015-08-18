@@ -86,18 +86,18 @@
   };
 
   /**
-   *
-   * @param {}
-   * @return {}
+   * Clears the entire associative array.
+   * @param {void}
+   * @return {void}
    */
   AssociativeArray.prototype.clear = function(){
     this.items = {}
   };
 
   /**
-   *
-   * @param {}
-   * @return {}
+   * Returns the size of the associative array based on the number of keys.
+   * @param {void}
+   * @return {int}
    */
   AssociativeArray.prototype.size = function(){
     return Object.keys(this.items).length;
