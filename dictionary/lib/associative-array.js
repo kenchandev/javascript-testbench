@@ -42,5 +42,66 @@
     return false;
   };
 
+  /**
+   * Retrieves a specific value based on a provided key.
+   * @param {*}
+   * @return {*}
+   */
+  AssociativeArray.prototype.get = function(key){
+    return this.has(key) ? this.items[key] : undefined;
+  };
 
+  /**
+   * Returns an array of all keys within the associative array.
+   * @param {void}
+   * @return {Array}
+   */
+  AssociativeArray.prototype.keys = function(){
+    var keys = [];
+
+    for(var k in this.items){
+      if(this.has(k){
+        keys.push(k);
+      })
+    }
+
+    return keys;
+  };
+
+  /**
+   * Returns an array of all values within the associative array.
+   * @param {void}
+   * @return {Array}
+   */
+  AssociativeArray.prototype.values = function(){
+    var values = [];
+
+    for(var k in this.items){
+      if(this.has(k)){
+        values.push(this.items[k]);
+      }
+    }
+
+    return values;
+  };
+
+  /**
+   *
+   * @param {}
+   * @return {}
+   */
+  AssociativeArray.prototype.clear = function(){
+    this.items = {}
+  };
+
+  /**
+   *
+   * @param {}
+   * @return {}
+   */
+  AssociativeArray.prototype.size = function(){
+    return Object.keys(this.items).length;
+  };
+
+  module.exports = AssociativeArray;
 }());
