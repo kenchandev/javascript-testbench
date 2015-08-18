@@ -8,7 +8,7 @@ var Node = require('./node').doubly;
    * @param {void}
    * @return {LinkedList}
    */
-  var DoublyLinkedList = function DoublyLinkedList(){
+  var DoublyLinkedList = function(){
     this.head = null;
     this.tail = null;
     this.length = 0;
