@@ -1,16 +1,17 @@
-# Linked Lists
+# Dictionaries
 
-This simple npm module provides three rudimentary variations of linked lists:
+Dictionary serve as data storage for [key, value] pairs, where the key is used to find a particular element.
 
-- Singly Linked Lists
-- Doubly Linked Lists
-- Circular Linked Lists
+## Methods
 
-## Singly Linked List Methods
-
-## Doubly Linked List Methods
-
-## Circular Linked List Methods
+- set
+- remove
+- has
+- get
+- clear
+- size
+- keys
+- values
 
 ## Testing
 
