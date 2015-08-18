@@ -30,8 +30,17 @@
   };
 
   /**
-   *
-   *
+   * Removes a value from the associative array using a corresponding key.
+   * @param {*}
+   * @return {boolean}
    */
-   
+  AssociativeArray.prototype.remove = function(key){
+    if(this.has(key)){
+      delete items[key];
+      return true;
+    }
+    return false;
+  };
+
+
 }());
